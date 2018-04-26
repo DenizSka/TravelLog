@@ -36,7 +36,7 @@ class Landmark extends Component {
             <h4> Address: {this.state.currLandmark.formatted_address} </h4>
             <h4> Description: {this.state.currLandmark.description} </h4>
             <button onClick={this.handleDelete}>
-         Delete Landmark
+              Delete Landmark
             </button>
           </section>
         : null }
