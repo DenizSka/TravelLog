@@ -7,7 +7,7 @@ import Landmark from './components/Landmark';
 import AddForm from './components/AddForm';
 import Search from './components/Search';
 import ApiResult from './components/ApiResult';
-
+import ErrorBoundary from './components/ErrorBoundary';
 
 class App extends Component {
   constructor() {
@@ -107,6 +107,7 @@ class App extends Component {
         <Header />
         <div className="container">
           <Switch>
+          <ErrorBoundary>
             <Route
               exact
               path="/"
@@ -115,6 +116,8 @@ class App extends Component {
                 landmarkData={this.state.landmarkData}
               />)}
             />
+            </ErrorBoundary>
+            <ErrorBoundary>
             <Route
               path="/landmarks/:id"
               render={props => (<Landmark
@@ -123,6 +126,8 @@ class App extends Component {
                 deleteLandmark={this.deleteLandmark}
               />)}
             />
+            </ErrorBoundary>
+            <ErrorBoundary>
             <Route
               path="/new"
               render={props => (<AddForm
@@ -131,6 +136,7 @@ class App extends Component {
                 landmarkSubmit={this.landmarkSubmit}
               />)}
             />
+            </ErrorBoundary>
           </Switch>
         </div>
 

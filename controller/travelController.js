@@ -36,7 +36,7 @@ module.exports = {
       description: req.body.description,
     })
       .then((landmark) => {
-        console.log(`this is the thing I want to see ${json.stringify(landmark)}`);
+        console.log(`this is the thing I want to see ${JSON.stringify(landmark)}`);
         res.json({
           message: 'landmark added successfully!',
           data: { landmark },
@@ -62,12 +62,10 @@ module.exports = {
 
   destroy(req, res, next) {
     landmarkDB.destroy(req.params.id)
-      .then(() => {
-        res.json({
-          message: 'Landmark has been deleted',
-        });
+      .then((landmark) => {
+        res.locals.landmark = landmark;
       })
       .catch(err => next(err));
-  },
+    }
 
 };
